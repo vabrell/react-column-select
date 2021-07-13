@@ -167,6 +167,12 @@ const Container: FC<ContainerProps> = ({
     [selected, search.right]
   )
 
+  const sortOptions = (a: OptionType, b: OptionType) => {
+    if (a.value > b.value) return 1
+    if (a.value < b.value) return 0
+    return -1
+  }
+
   return (
     <Grid>
       <GridItemColumnLeft
@@ -190,7 +196,7 @@ const Container: FC<ContainerProps> = ({
           />
         )}
         <Column id='left-column' isSearchable={isSearchable}>
-          {filteredOptions.map((option) => (
+          {filteredOptions.sort(sortOptions).map((option) => (
             <Option
               key={`l-${option.value}`}
               theme={theme}
