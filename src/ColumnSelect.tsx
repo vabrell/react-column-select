@@ -162,12 +162,15 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
 
   const customTheme = Object.assign(
     {
-      headerBgColor: '#d6b1ff',
-      columnBorderColor: '#cfa4ff',
+      headerBgColor: '#FFFFFF',
+      columnBorderColor: '#CFA4FF',
       textColor: '#000000',
       columnBgColor: '#CBD5E0',
       buttonBgColor: '#CBD5E0',
+      buttonHoverBgColor: '#CBD5E098',
       searchFocusBorderColor: '#805Ad5',
+      optionHoverBgColor: '#F2F2F2',
+      optionSelectedBgColor: '#DDDCDC',
     },
     theme
   )

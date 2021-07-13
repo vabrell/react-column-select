@@ -31,17 +31,44 @@ export default {
         category: 'Colors',
       },
     },
+    buttonHoverBgColor: {
+      control: 'color',
+      table: {
+        category: 'Colors',
+      },
+    },
+    searchFocusBorderColor: {
+      control: 'color',
+      table: {
+        category: 'Colors',
+      },
+    },
+    optionHoverBgColor: {
+      control: 'color',
+      table: {
+        category: 'Colors',
+      },
+    },
+    optionSelectedBgColor: {
+      control: 'color',
+      table: {
+        category: 'Colors',
+      },
+    },
   },
 } as Meta
 
 const Template: Story = (args) => {
   const theme = {
-    headerBgColor: args.headerBgColor ?? '#d6b1ff',
-    columnBorderColor: args.secondary ?? '#cfa4ff',
+    headerBgColor: args.headerBgColor ?? '#FFFFFF',
+    columnBorderColor: args.secondary ?? '#CFA4FF',
     textColor: '#000000',
     columnBgColor: args.columnBgColor ?? '#CBD5E0',
     buttonBgColor: args.buttonBgColor ?? '#CBD5E0',
+    buttonHoverBgColor: args.buttonHoverBgColor ?? '#CBD5E098',
     searchFocusBorderColor: args.searchFocusBorderColor ?? '#805Ad5',
+    optionHoverBgColor: args.optionHoverBgColor ?? '#F2F2F2',
+    optionSelectedBgColor: args.optionSelectedBgColor ?? '#DDDCDC',
   }
   return <ColumnSelect theme={theme} {...args} />
 }
