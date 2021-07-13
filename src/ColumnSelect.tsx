@@ -150,6 +150,8 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       options[oldIndex] = prevOption
 
       setSelectedOptions(options)
+
+      setCurrentAction('move-up')
     }
   }
 
@@ -164,6 +166,8 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       options[oldIndex] = prevOption
 
       setSelectedOptions(options)
+
+      setCurrentAction('move-down')
     }
   }
 

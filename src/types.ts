@@ -20,7 +20,13 @@ export type Theme = {
 
 export type ColumnType = 'options' | 'selected'
 
-export type ActionTypes = 'add' | 'add-all' | 'remove' | 'remove-all'
+export type ActionTypes =
+  | 'add'
+  | 'add-all'
+  | 'remove'
+  | 'remove-all'
+  | 'move-up'
+  | 'move-down'
 
 export type ActionMeta = {
   action: ActionTypes
