@@ -11,7 +11,7 @@ export const Row = styled.button<{ isSelected: boolean; theme: Theme }>`
   user-select: none;
   cursor: pointer;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 1rem;
   }
 
