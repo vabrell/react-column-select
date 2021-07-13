@@ -13,7 +13,14 @@ import type { ColumnType, OptionType, OptionsType, Theme } from '../../types'
 import Column from '../column/column'
 import Option from '../option/option'
 import Button from '../button/button'
-import { AddIcon, AddAll, RemoveIcon, RemoveAll } from '../icons'
+import {
+  AddIcon,
+  AddAll,
+  RemoveIcon,
+  RemoveAll,
+  UpIcon,
+  DownIcon,
+} from '../icons'
 
 interface ContainerProps {
   /**
@@ -48,6 +55,14 @@ interface ContainerProps {
    * The function to remove all selected options.
    */
   removeAll: () => void
+  /**
+   * The function to move selected option up.
+   */
+  moveUp: () => void
+  /**
+   * The function to move selected option down.
+   */
+  moveDown: () => void
   /**
    * The available select options.
    */
@@ -108,6 +123,8 @@ const Container: FC<ContainerProps> = ({
   addAll,
   remove,
   removeAll,
+  moveUp,
+  moveDown,
   options,
   selected,
   isMax,
@@ -228,6 +245,22 @@ const Container: FC<ContainerProps> = ({
             theme={theme}
           />
         )}
+        <Button
+          type='button'
+          centerIcon={<UpIcon />}
+          onClick={moveUp}
+          marginTop='1.5rem'
+          theme={theme}
+          label='Move Up'
+        />
+        <Button
+          type='button'
+          centerIcon={<DownIcon />}
+          onClick={moveDown}
+          marginTop='0.5rem'
+          theme={theme}
+          label='Move Down'
+        />
         <Button
           type='button'
           label='Remove'

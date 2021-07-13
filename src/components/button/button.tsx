@@ -14,6 +14,11 @@ interface ButtonProps {
    */
   rightIcon?: ReactElement
   /**
+   * If added, the button will show an icon instead of the button's label.
+   * @type ReactElement
+   */
+  centerIcon?: ReactElement
+  /**
    * The text show in the button.
    */
   label: string
@@ -44,6 +49,7 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({
   leftIcon,
   rightIcon,
+  centerIcon,
   label,
   marginTop,
   type = 'button',
@@ -63,7 +69,7 @@ const Button: FC<ButtonProps> = ({
       type={type}
     >
       {leftIcon && <ButtonIcon margin='0 0.25rem 0 0'>{leftIcon}</ButtonIcon>}
-      {label}
+      {centerIcon ? centerIcon : label}
       {rightIcon && <ButtonIcon margin='0 0 0 0.25rem'>{rightIcon}</ButtonIcon>}
     </StyledButton>
   )

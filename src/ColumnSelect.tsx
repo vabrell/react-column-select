@@ -139,6 +139,34 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
     setCurrentAction('remove-all')
   }
 
+  const moveUp = () => {
+    if (!selectOptions.includes(current)) {
+      const options = [...selectedOptions]
+      const oldIndex = options.findIndex((opt) => opt.value === current.value)
+      if (oldIndex === 0) return
+
+      const prevOption = options[oldIndex - 1]
+      options[oldIndex - 1] = current
+      options[oldIndex] = prevOption
+
+      setSelectedOptions(options)
+    }
+  }
+
+  const moveDown = () => {
+    if (!selectOptions.includes(current)) {
+      const options = [...selectedOptions]
+      const oldIndex = options.findIndex((opt) => opt.value === current.value)
+      if (oldIndex === selectedOptions.length - 1) return
+
+      const prevOption = options[oldIndex + 1]
+      options[oldIndex + 1] = current
+      options[oldIndex] = prevOption
+
+      setSelectedOptions(options)
+    }
+  }
+
   const handleNext = (column: ColumnType) => {
     const isOptionsCol = column === 'options'
     const options = isOptionsCol ? selectOptions : selectedOptions
@@ -185,6 +213,8 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       addAll={addAll}
       remove={remove}
       removeAll={removeAll}
+      moveUp={moveUp}
+      moveDown={moveDown}
       options={selectOptions}
       selected={selectedOptions}
       isMax={isMax}
