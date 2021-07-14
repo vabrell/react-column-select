@@ -61,7 +61,7 @@ export default {
 const Template: Story = (args) => {
   const theme = {
     headerBgColor: args.headerBgColor ?? '#FFFFFF',
-    columnBorderColor: args.secondary ?? '#CFA4FF',
+    columnBorderColor: args.columnBorderColor ?? '#CFA4FF',
     textColor: '#000000',
     columnBgColor: args.columnBgColor ?? '#CBD5E0',
     buttonBgColor: args.buttonBgColor ?? '#CBD5E0',
