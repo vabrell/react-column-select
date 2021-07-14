@@ -29,9 +29,9 @@ export const GridItemHeaderLeft = styled.div<{ theme: Theme }>`
     content: '';
     position: absolute;
     bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 3px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
     background-color: ${({ theme }) => theme.columnBorderColor};
   }
 `
@@ -48,9 +48,9 @@ export const GridItemHeaderRight = styled.div<{ theme: Theme }>`
     content: '';
     position: absolute;
     bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 3px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
     background-color: ${({ theme }) => theme.columnBorderColor};
   }
 `
@@ -62,14 +62,14 @@ export const GridItemCenter = styled.div`
 
 export const GridItemColumnLeft = styled.div<{ theme: Theme }>`
   grid-area: d;
-  border: 3px solid ${({ theme }) => theme.columnBorderColor};
-  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.columnBorderColor};
+  border-radius: 2px;
 `
 
 export const GridItemColumnRight = styled.div<{ theme: Theme }>`
   grid-area: e;
-  border: 3px solid ${({ theme }) => theme.columnBorderColor};
-  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.columnBorderColor};
+  border-radius: 2px;
 `
 
 export const Input = styled.input<{ theme: Theme }>`

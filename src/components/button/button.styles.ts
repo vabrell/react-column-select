@@ -13,7 +13,7 @@ export const Button = styled.button<{ marginTop?: string; theme: Theme }>`
   border: 0;
   transition: all 250ms;
   padding: 0.6rem 0;
-  border-radius: 0.33rem;
+  border-radius: 2px;
   margin-top: ${({ marginTop }) => marginTop};
   background-color: ${({ theme }) => theme.buttonBgColor};
   cursor: pointer;
