@@ -7,6 +7,6 @@ export const VStack = styled.div<{ isSearchable: boolean }>`
   border-top-width: ${({ isSearchable }) => (isSearchable ? 'thin' : '0')};
   border-top-style: solid;
   border-color: inherit;
-  height: 32rem;
   overflow-y: auto;
+  height: 20rem;
 `

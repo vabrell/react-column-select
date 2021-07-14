@@ -3,7 +3,6 @@ import type { Theme } from '../../types'
 
 export const Grid = styled.div`
   display: grid;
-  min-height: 24rem;
   gap: 0.5rem;
   grid-template-columns: repeat(1, 5fr);
   grid-template-areas: 'a' 'd' 'b' 'c' 'e';
@@ -13,7 +12,7 @@ export const Grid = styled.div`
   }
 
   @media (min-width: 600px) {
-    grid-template-columns: repeat(2, 2fr) 1fr repeat(2, 2fr);
+    grid-template-columns: repeat(2, 2fr) 95px repeat(2, 2fr);
     grid-template-areas: 'a a b c c' 'd d b e e';
   }
 `

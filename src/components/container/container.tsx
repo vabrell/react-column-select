@@ -13,14 +13,7 @@ import type { ColumnType, OptionType, OptionsType, Theme } from '../../types'
 import Column from '../column/column'
 import Option from '../option/option'
 import Button from '../button/button'
-import {
-  AddIcon,
-  AddAll,
-  RemoveIcon,
-  RemoveAll,
-  UpIcon,
-  DownIcon,
-} from '../icons'
+import { UpIcon, DownIcon } from '../icons'
 
 interface ContainerProps {
   /**
@@ -230,7 +223,6 @@ const Container: FC<ContainerProps> = ({
           type='button'
           onClick={add}
           label='Add'
-          rightIcon={<AddIcon />}
           isDisabled={!options.length || isMax}
           theme={theme}
         />
@@ -239,7 +231,6 @@ const Container: FC<ContainerProps> = ({
             type='button'
             label='Add All'
             onClick={addAll}
-            rightIcon={<AddAll />}
             marginTop='0.5rem'
             isDisabled={!options.length || disableAddAll}
             theme={theme}
@@ -265,7 +256,6 @@ const Container: FC<ContainerProps> = ({
           type='button'
           label='Remove'
           onClick={remove}
-          leftIcon={<RemoveIcon />}
           marginTop='1.5rem'
           isDisabled={!selected.length}
           theme={theme}
@@ -275,7 +265,6 @@ const Container: FC<ContainerProps> = ({
             type='button'
             label='Remove All'
             onClick={removeAll}
-            leftIcon={<RemoveAll />}
             marginTop='0.5rem'
             isDisabled={!selected.length}
             theme={theme}
