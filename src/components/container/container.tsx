@@ -156,7 +156,7 @@ const Container: FC<ContainerProps> = ({
   const filteredOptions = useMemo(
     () =>
       isSearchable
-        ? options.filter((o) =>
+        ? options.filter((o : OptionType) =>
             o.label
               .toLocaleLowerCase()
               .includes(search.left.toLocaleLowerCase())
@@ -168,7 +168,7 @@ const Container: FC<ContainerProps> = ({
   const filteredSelected = useMemo(
     () =>
       isSearchable
-        ? selected.filter((s) =>
+        ? selected.filter((s : OptionType) =>
             s.label
               .toLocaleLowerCase()
               .includes(search.right.toLocaleLowerCase())
@@ -178,8 +178,8 @@ const Container: FC<ContainerProps> = ({
   )
 
   const sortOptions = (a: OptionType, b: OptionType) => {
-    if (a.value > b.value) return 1
-    if (a.value < b.value) return 0
+    if (a.label > b.label) return 1
+    if (a.label < b.label) return 0
     return -1
   }
 
