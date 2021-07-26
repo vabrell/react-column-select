@@ -9,7 +9,13 @@ import {
   Input,
   Text,
 } from './container.style'
-import type { ColumnType, OptionType, OptionsType, Theme } from '../../types'
+import type {
+  ColumnType,
+  OptionType,
+  OptionsType,
+  Theme,
+  ButtonText,
+} from '../../types'
 import Column from '../column/column'
 import Option from '../option/option'
 import Button from '../button/button'
@@ -105,6 +111,10 @@ interface ContainerProps {
    * The react-column-select theme object.
    */
   theme: Theme
+  /**
+   * The react-column-select button text object.
+   */
+  buttonText: ButtonText
 }
 
 const Container: FC<ContainerProps> = ({
@@ -130,6 +140,7 @@ const Container: FC<ContainerProps> = ({
   disableDoubleClick,
   disableKeyboard,
   theme,
+  buttonText,
 }) => {
   const [search, setSearch] = useState({ left: '', right: '' })
 
@@ -156,7 +167,7 @@ const Container: FC<ContainerProps> = ({
   const filteredOptions = useMemo(
     () =>
       isSearchable
-        ? options.filter((o : OptionType) =>
+        ? options.filter((o: OptionType) =>
             o.label
               .toLocaleLowerCase()
               .includes(search.left.toLocaleLowerCase())
@@ -168,7 +179,7 @@ const Container: FC<ContainerProps> = ({
   const filteredSelected = useMemo(
     () =>
       isSearchable
-        ? selected.filter((s : OptionType) =>
+        ? selected.filter((s: OptionType) =>
             s.label
               .toLocaleLowerCase()
               .includes(search.right.toLocaleLowerCase())
@@ -222,14 +233,14 @@ const Container: FC<ContainerProps> = ({
         <Button
           type='button'
           onClick={add}
-          label='Add'
+          label={buttonText.add}
           isDisabled={!options.length || isMax}
           theme={theme}
         />
         {!disableAllButtons && (
           <Button
             type='button'
-            label='Add All'
+            label={buttonText.addAll}
             onClick={addAll}
             marginTop='0.5rem'
             isDisabled={!options.length || disableAddAll}
@@ -254,7 +265,7 @@ const Container: FC<ContainerProps> = ({
         />
         <Button
           type='button'
-          label='Remove'
+          label={buttonText.remove}
           onClick={remove}
           marginTop='1.5rem'
           isDisabled={!selected.length}
@@ -263,7 +274,7 @@ const Container: FC<ContainerProps> = ({
         {!disableAllButtons && (
           <Button
             type='button'
-            label='Remove All'
+            label={buttonText.removeAll}
             onClick={removeAll}
             marginTop='0.5rem'
             isDisabled={!selected.length}

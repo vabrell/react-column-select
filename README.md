@@ -71,6 +71,7 @@ const HobbiesSelect = () => {
 | `isSearchable`       | boolean  | ✖          | false        | enables searching                                   |
 | `searchPlaceholder`  | string   | ✖          | 'Search ...' | the placeholder string for the search inputs        |
 | `theme`              | object   | ✖          | {}           | the color theme                                     |
+| `buttonText`         | object   | ✖          | {}           | the text on the buttons                             |
 | `disableAllButtons`  | boolean  | ✖          | false        | disable the "Add All" and "Remove All" buttons      |
 | `disableDoubleClick` | boolean  | ✖          | false        | disable double click to add/remove an option        |
 | `disableKeyboard`    | boolean  | ✖          | false        | disable navigation the select options with keyboard |
@@ -86,7 +87,23 @@ Below is the default theme, change the values that you want to customize:
     textColor: '#000000',
     columnBgColor: '#CBD5E0',
     buttonBgColor: '#CBD5E0',
-    searchFocusBorderColor: '#805Ad5'
+    buttonHoverBgColor: '#CBD5E0',
+    searchFocusBorderColor: '#805Ad5',
+    optionHoverBgColor: '#F2F2F2',
+    optionSelectedBgColor: '#DDDCDC'
+}
+```
+
+## Button text customization
+
+Below is the default button texts, change the values that you want to customize:
+
+```jsx
+{
+  add: "Add",
+  addAll: "Add all",
+  remove: "Remove",
+  removeAll: "Remove all'
 }
 ```
 

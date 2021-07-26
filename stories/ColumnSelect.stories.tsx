@@ -55,6 +55,30 @@ export default {
         category: 'Colors',
       },
     },
+    buttonTextAdd: {
+      control: 'text',
+      table: {
+        category: 'Buttons',
+      },
+    },
+    buttonTextAddAll: {
+      control: 'text',
+      table: {
+        category: 'Buttons',
+      },
+    },
+    buttonTextRemove: {
+      control: 'text',
+      table: {
+        category: 'Buttons',
+      },
+    },
+    buttonTextRemoveAll: {
+      control: 'text',
+      table: {
+        category: 'Buttons',
+      },
+    },
   },
 } as Meta
 
@@ -70,7 +94,13 @@ const Template: Story = (args) => {
     optionHoverBgColor: args.optionHoverBgColor ?? '#F2F2F2',
     optionSelectedBgColor: args.optionSelectedBgColor ?? '#DDDCDC',
   }
-  return <ColumnSelect theme={theme} {...args} />
+  const buttonText = {
+    add: args.buttonTextAdd ?? 'Add',
+    addAll: args.buttonTextAddAll ?? 'All all',
+    remove: args.buttonTextRemove ?? 'Remove',
+    removeAll: args.buttonTextRemoveAll ?? 'Remove all',
+  }
+  return <ColumnSelect theme={theme} buttonText={buttonText} {...args} />
 }
 
 export const Default = Template.bind({})

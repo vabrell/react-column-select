@@ -7,6 +7,7 @@ import type {
   OptionsType,
   ActionMeta,
   ActionTypes,
+  ButtonText,
 } from './types'
 
 interface ColumnSelectProps {
@@ -65,6 +66,10 @@ interface ColumnSelectProps {
    * The react-column-select theme object.
    */
   theme?: Theme
+  /**
+   * The react-column-select button text.
+   */
+  buttonText?: ButtonText
 }
 
 const ColumnSelect: FC<ColumnSelectProps> = ({
@@ -80,6 +85,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
   disableDoubleClick,
   disableKeyboard,
   theme,
+  buttonText,
 }) => {
   const [selectOptions, setSelectOptions] = useState<OptionsType>(
     options.filter((o) => !defaultValue.find((d) => d.value === o.value))
@@ -207,6 +213,16 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
     theme
   )
 
+  const customButtonText = Object.assign(
+    {
+      add: 'Add',
+      addAll: 'Add all',
+      remove: 'Remove',
+      removeAll: 'Remove all',
+    },
+    buttonText
+  )
+
   return (
     <Container
       leftHeader={leftHeader}
@@ -231,6 +247,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       disableDoubleClick={disableDoubleClick}
       disableKeyboard={disableKeyboard}
       theme={customTheme}
+      buttonText={customButtonText}
     />
   )
 }

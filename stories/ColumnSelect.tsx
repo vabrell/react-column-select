@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import ColumnSelect from '../src'
-import type { OptionsType, Theme } from '../src/types'
+import type { OptionsType, Theme, ButtonText } from '../src/types'
 import './column_select.css'
 
 export interface ColumnSelectProps {
@@ -11,6 +11,7 @@ export interface ColumnSelectProps {
   disableDoubleClick?: boolean
   disableKeyboard?: boolean
   max?: number
+  buttonText?: ButtonText
 }
 
 export const options = [
@@ -30,6 +31,7 @@ const ColumnSelectExample: FC<ColumnSelectProps> = ({
   disableAllButtons,
   disableDoubleClick,
   disableKeyboard,
+  buttonText,
 }) => {
   const [selected, setSelected] = useState<OptionsType>([])
 
@@ -49,6 +51,7 @@ const ColumnSelectExample: FC<ColumnSelectProps> = ({
           disableAllButtons={disableAllButtons}
           disableDoubleClick={disableDoubleClick}
           disableKeyboard={disableKeyboard}
+          buttonText={buttonText}
         />
       </section>
     </article>

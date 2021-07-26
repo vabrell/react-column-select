@@ -31,3 +31,10 @@ export type ActionTypes =
 export type ActionMeta = {
   action: ActionTypes
 }
+
+export type ButtonText = {
+  add: string
+  addAll: string
+  remove: string
+  removeAll: string
+}
