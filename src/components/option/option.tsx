@@ -32,7 +32,7 @@ interface OptionProps {
   /**
    * The react-column-select pinned icon.
    */
-  PinnedIcon?: React.FC
+  PinnedIcon: React.FC
 }
 
 const Option: FC<OptionProps> = ({

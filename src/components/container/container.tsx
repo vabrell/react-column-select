@@ -235,6 +235,7 @@ const Container: FC<ContainerProps> = ({
               isSelected={option.value === current?.value}
               onClick={() => select(option)}
               onDoubleClick={() => (disableDoubleClick ? null : add())}
+              PinnedIcon={pinnedIcon}
             />
           ))}
         </Column>
