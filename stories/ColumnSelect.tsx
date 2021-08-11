@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import ColumnSelect from '../src'
+import { LockedIcon } from '../src/components/icons'
 import type { OptionsType, Theme, ButtonText } from '../src/types'
 import './column_select.css'
 
@@ -12,15 +13,16 @@ export interface ColumnSelectProps {
   disableKeyboard?: boolean
   max?: number
   buttonText?: ButtonText
+  pinnedIcon?: React.FC
 }
 
 export const options = [
-  { value: 'pawn', label: 'Pawn' },
-  { value: 'bishop', label: 'Bishop' },
-  { value: 'knight', label: 'Knight' },
-  { value: 'rook', label: 'Rook' },
-  { value: 'queen', label: 'Queen' },
-  { value: 'king', label: 'King' },
+  { value: 'pawn', label: 'Pawn', pinned: false },
+  { value: 'bishop', label: 'Bishop', pinned: false },
+  { value: 'knight', label: 'Knight', pinned: false },
+  { value: 'rook', label: 'Rook', pinned: false },
+  { value: 'queen', label: 'Queen', pinned: false },
+  { value: 'king', label: 'King', pinned: true },
 ]
 
 const ColumnSelectExample: FC<ColumnSelectProps> = ({

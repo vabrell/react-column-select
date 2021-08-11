@@ -10,6 +10,9 @@ export const Row = styled.button<{ isSelected: boolean; theme: Theme }>`
   border: 0;
   user-select: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:first-of-type {
     margin-top: 1rem;

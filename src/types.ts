@@ -1,6 +1,7 @@
 export type OptionType = {
   value: string | number
   label: string
+  pinned: boolean
 }
 
 export type OptionsType = Array<OptionType>

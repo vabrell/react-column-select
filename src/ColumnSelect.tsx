@@ -9,6 +9,7 @@ import type {
   ActionTypes,
   ButtonText,
 } from './types'
+import { LockedIcon } from './components/icons'
 
 interface ColumnSelectProps {
   /**
@@ -70,6 +71,10 @@ interface ColumnSelectProps {
    * The react-column-select button text.
    */
   buttonText?: ButtonText
+  /**
+   * The react-column-select pinned icon.
+   */
+  pinnedIcon?: React.FC
 }
 
 const ColumnSelect: FC<ColumnSelectProps> = ({
@@ -86,6 +91,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
   disableKeyboard,
   theme,
   buttonText,
+  pinnedIcon,
 }) => {
   const [selectOptions, setSelectOptions] = useState<OptionsType>(
     options.filter((o) => !defaultValue.find((d) => d.value === o.value))
@@ -94,6 +100,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
   const [selectedOptions, setSelectedOptions] =
     useState<OptionsType>(defaultValue)
   const [currentAction, setCurrentAction] = useState<ActionTypes>()
+  const [disableRemove, setDisableRemove] = useState<boolean>(false)
 
   const isMax = useMemo(
     () => (max ? selectedOptions.length >= max : false),
@@ -105,11 +112,30 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
     [max]
   )
 
+  const pinnedOptions = options.filter((option) => option.pinned)
+
   useEffect(() => {
     if (currentAction) {
       onChange(selectedOptions, { action: currentAction })
     }
+
+    pinnedOptions.forEach((option) => {
+      if (!selectedOptions.includes(option)) {
+        setSelectOptions(selectOptions.filter((o) => o.value !== option.value))
+        setSelectedOptions([...selectedOptions, option])
+      }
+    })
   }, [selectedOptions])
+
+  const updateCurrent = (currentSelected: OptionType) => {
+    if (currentSelected.pinned) {
+      setDisableRemove(true)
+    } else {
+      setDisableRemove(false)
+    }
+
+    setCurrent(currentSelected)
+  }
 
   const add = () => {
     if (selectedOptions.find((c) => c.value === current.value) || isMax) return
@@ -129,6 +155,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
   }
 
   const remove = () => {
+    if (current.pinned) return
     if (selectOptions.find((c) => c.value === current.value)) return
     setSelectedOptions(selectedOptions.filter((o) => o.value !== current.value))
     setSelectOptions([...selectOptions, current])
@@ -138,9 +165,12 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
 
   const removeAll = () => {
     if (!selectedOptions.length) return
-    setSelectOptions([...selectOptions, ...selectedOptions])
+    setSelectOptions([
+      ...selectOptions,
+      ...selectedOptions.filter((option) => !option.pinned),
+    ])
     setCurrent(selectedOptions[0])
-    setSelectedOptions([])
+    setSelectedOptions(pinnedOptions)
 
     setCurrentAction('remove-all')
   }
@@ -223,12 +253,14 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
     buttonText
   )
 
+  const customPinnedIcon = pinnedIcon ?? LockedIcon
+
   return (
     <Container
       leftHeader={leftHeader}
       rightHeader={rightHeader}
       current={current}
-      select={(option: OptionType) => setCurrent(option)}
+      select={(option: OptionType) => updateCurrent(option)}
       add={add}
       addAll={addAll}
       remove={remove}
@@ -239,6 +271,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       selected={selectedOptions}
       isMax={isMax}
       disableAddAll={disableAddAll}
+      disableRemove={disableRemove}
       onNext={handleNext}
       onPrevious={handlePrevious}
       isSearchable={isSearchable}
@@ -248,6 +281,7 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
       disableKeyboard={disableKeyboard}
       theme={customTheme}
       buttonText={customButtonText}
+      pinnedIcon={customPinnedIcon}
     />
   )
 }

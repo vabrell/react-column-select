@@ -24,6 +24,15 @@ interface OptionProps {
    * The react-column-select theme object.
    */
   theme: Theme
+  /**
+   * The react-column-select is pinned.
+   * @default false
+   */
+  isPinned?: boolean
+  /**
+   * The react-column-select pinned icon.
+   */
+  PinnedIcon?: React.FC
 }
 
 const Option: FC<OptionProps> = ({
@@ -32,6 +41,8 @@ const Option: FC<OptionProps> = ({
   onClick,
   onDoubleClick,
   theme,
+  isPinned,
+  PinnedIcon,
 }) => {
   return (
     <Row
@@ -46,6 +57,7 @@ const Option: FC<OptionProps> = ({
       theme={theme}
     >
       {label}
+      {isPinned && <PinnedIcon />}
     </Row>
   )
 }

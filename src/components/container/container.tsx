@@ -79,6 +79,10 @@ interface ContainerProps {
    */
   disableAddAll: boolean
   /**
+   * Disables the "remove" button if the selected option is pinned.
+   */
+  disableRemove: boolean
+  /**
    * The function to go to next option.
    */
   onNext: (column: ColumnType) => void
@@ -115,6 +119,10 @@ interface ContainerProps {
    * The react-column-select button text object.
    */
   buttonText: ButtonText
+  /**
+   * The react-column-select pinned icon.
+   */
+  pinnedIcon: React.FC
 }
 
 const Container: FC<ContainerProps> = ({
@@ -132,6 +140,7 @@ const Container: FC<ContainerProps> = ({
   selected,
   isMax,
   disableAddAll,
+  disableRemove,
   onNext,
   onPrevious,
   isSearchable = false,
@@ -141,6 +150,7 @@ const Container: FC<ContainerProps> = ({
   disableKeyboard,
   theme,
   buttonText,
+  pinnedIcon,
 }) => {
   const [search, setSearch] = useState({ left: '', right: '' })
 
@@ -268,7 +278,7 @@ const Container: FC<ContainerProps> = ({
           label={buttonText.remove}
           onClick={remove}
           marginTop='1.5rem'
-          isDisabled={!selected.length}
+          isDisabled={disableRemove || !selected.length}
           theme={theme}
         />
         {!disableAllButtons && (
@@ -311,6 +321,8 @@ const Container: FC<ContainerProps> = ({
               isSelected={option.value === current?.value}
               onClick={() => select(option)}
               onDoubleClick={() => (disableDoubleClick ? null : remove())}
+              isPinned={option.pinned}
+              PinnedIcon={pinnedIcon}
             />
           ))}
         </Column>
