@@ -113,18 +113,17 @@ const ColumnSelect: FC<ColumnSelectProps> = ({
   )
 
   const pinnedOptions = options.filter((option) => option.pinned)
+  pinnedOptions.forEach((option) => {
+    if (!selectedOptions.find((o) => o.value === option.value)) {
+      setSelectOptions(selectOptions.filter((o) => o.value !== option.value))
+      setSelectedOptions([...selectedOptions, option])
+    }
+  })
 
   useEffect(() => {
     if (currentAction) {
       onChange(selectedOptions, { action: currentAction })
     }
-
-    pinnedOptions.forEach((option) => {
-      if (!selectedOptions.includes(option)) {
-        setSelectOptions(selectOptions.filter((o) => o.value !== option.value))
-        setSelectedOptions([...selectedOptions, option])
-      }
-    })
   }, [selectedOptions])
 
   const updateCurrent = (currentSelected: OptionType) => {
